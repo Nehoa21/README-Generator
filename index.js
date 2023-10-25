@@ -9,6 +9,7 @@ const questions =
     // project name
       type: 'input',
       name: 'title',
+      default: 'Project Title',
       message: 'What is the name of your project?',
       validate: (value) => {
         if(value) {
@@ -21,6 +22,7 @@ const questions =
       // project description
       type: 'input',
       name: 'description',
+      default: 'The what, why, and how',
       message: 'Write a description explaining the what, why, and how of your project.',
       validate: (value) => {
         if(value) {
@@ -33,6 +35,7 @@ const questions =
       // installation instructions
       type: 'input',
       name: 'installation',
+      default: 'Installation',
       message: 'Give instructions on how to install project.',
       validate: (value) => {
         if(value) {
@@ -45,6 +48,7 @@ const questions =
       // usage information
       type: 'input',
       name: 'usage',
+      default: 'Usage',
       message: 'Give instructions how to run the project.',
       validate: (value) => {
         if(value) {
@@ -57,6 +61,7 @@ const questions =
       // contributions guidelines
       type: 'input',
       name: 'contributing',
+      default: 'How to contribute',
       message: 'Enter your GitHub Username',
       validate: (value) => {
         if(value) {
@@ -66,10 +71,11 @@ const questions =
       }
     },
     {
-      // test instructions
+      // tests
       type: 'input',
       name: 'tests',
-      message: 'Enter your LinkedIn URL.',
+      default: 'Tests',
+      message: 'Add additional tests for your project.',
     },
     {
       // lincense choice
@@ -98,12 +104,14 @@ const questions =
       // GitHub username
       type: 'input',
       name: 'github',
-      message: 'What is your GitHub username?',
+      default: 'Nehoa21',
+      message: 'What is your GitHub username? No @ needed.',
     },
     {
       // email address
       type: 'input',
       name: 'email',
+      default: 'example123@example.com',
       message: 'What is your email?',
     },
     {
