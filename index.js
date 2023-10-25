@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const fs = require('fs')
 const inquirer = require('inquirer')
-const generateMarkdown = require('generateMarkdown')
+const generateMarkdown = require('./utils/generateMarkdown.js')
 
 // TODO: Create an array of questions for user input
 const questions = 
@@ -13,9 +13,8 @@ const questions =
       validate: (value) => {
         if(value) {
           return true;
-        } else {
-          return 'A title is needed to continue.'
         }
+        return 'A title is needed to continue.'
       }
     },
     {
@@ -26,9 +25,8 @@ const questions =
       validate: (value) => {
         if(value) {
           return true;
-        } else {
-          return 'Describe your project before continuing.'
         }
+        return 'Describe your project before continuing.'
       }
     },
     {
@@ -39,9 +37,8 @@ const questions =
       validate: (value) => {
         if(value) {
           return true;
-        } else {
-          return 'Please give instructions before continuing.'
         }
+        return 'Please give instructions before continuing.'
       }
     },
     {
@@ -52,9 +49,8 @@ const questions =
       validate: (value) => {
         if(value) {
           return true;
-        } else {
-          return 'Please explain usage before continuing.'
         }
+        return 'Please explain usage before continuing.'
       }
     },
     {
@@ -65,9 +61,8 @@ const questions =
       validate: (value) => {
         if(value) {
           return true;
-        } else {
-          return 'Add contributors before continuing.'
         }
+        return 'Add contributors before continuing.'
       }
     },
     {
@@ -83,19 +78,21 @@ const questions =
       message: 'What license did you use?',
       choices: 
         [
-          'The MIT License',
-          'The GPL License', 
-          'Apache License',
-          'GNU License',
+          'apache License 2.0',
+          'GNU General Public License v3.0',
+          'MIT License',
+          'BSD 2-Clause "Simplifed" License',
+          'BSD 3-Clause "New" or "Revised" License',
+          'Boost Software License 1.0',
+          'Creeative Commons Zero v1.0 Universal',
+          'Eclipse Public License 2.0',
+          'GNU Affero General Public License v3.0',
+          'GNU General Public License v2.0',
+          'GNU Lesser General Public License v2.1',
+          'Mozilla Public License 2.0',
+          'The Unlicense',
           'N/A'
         ],
-      validate: (value) => {
-        if(value) {
-          return true;
-        } else {
-          return 'Select an option to continue.'
-        }
-      }  
     },
     {
       // GitHub username
@@ -126,8 +123,8 @@ function init() {
   const userInput = inquirer.prompt(questions);
   console.log(userInput);
 
-  const mdFile = generateMarkdown(userInput)
-  console.log(mdFile)
+  const mdFile = generateMarkdown(userInput);
+  console.log(mdFile);
 }
 
 // Function call to initialize app
