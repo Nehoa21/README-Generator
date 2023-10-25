@@ -56,7 +56,7 @@ const questions =
     {
       // contributions guidelines
       type: 'input',
-      name: 'contributions',
+      name: 'contributing',
       message: 'Enter your GitHub Username',
       validate: (value) => {
         if(value) {
@@ -68,7 +68,7 @@ const questions =
     {
       // test instructions
       type: 'input',
-      name: 'test',
+      name: 'tests',
       message: 'Enter your LinkedIn URL.',
     },
     {
@@ -106,12 +106,18 @@ const questions =
       name: 'email',
       message: 'What is your email?',
     },
+    {
+      // linkedIn
+      type: 'input',
+      name: 'linkedin',
+      message: 'What is your LinkedIn?',
+    },
   ];
 
 // TODO: Create a function to write README file
 
 function writeToFile(fileName, data) {
-  fileName = `${data.name.toLowerCase().split(' ').join('')}.md`
+  const fileName = `${data.name.toLowerCase().split(' ').join('')}.md`
   
   fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) => {
     err ? console.log(err) : console.log('README file was created!')
