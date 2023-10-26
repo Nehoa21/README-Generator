@@ -37,12 +37,6 @@ const questions =
       name: 'usage',
       default: 'Usage',
       message: 'Give instructions how to run the project.',
-      validate: (value) => {
-        if(value) {
-          return true;
-        }
-        return 'Please explain usage before continuing.'
-      }
     },
     {
       // contributions guidelines
@@ -50,12 +44,6 @@ const questions =
       name: 'contributing',
       default: 'Contributing',
       message: 'Add other contributors to the project.',
-      validate: (value) => {
-        if(value) {
-          return true;
-        }
-        return 'Add contributors before continuing.'
-      }
     },
     {
       // tests
@@ -72,19 +60,10 @@ const questions =
       choices: 
         [
           'Apache License 2.0',
-          'GNU General Public License v3.0',
           'MIT License',
-          'BSD 2-Clause "Simplifed" License',
-          'BSD 3-Clause "New" or "Revised" License',
-          'Boost Software License 1.0',
-          'Creeative Commons Zero v1.0 Universal',
-          'Eclipse Public License 2.0',
-          'GNU Affero General Public License v3.0',
           'GNU General Public License v2.0',
-          'GNU Lesser General Public License v2.1',
-          'Mozilla Public License 2.0',
+          'GNU General Public License v3.0',
           'The Unlicense',
-          'N/A'
         ],
     },
     {
@@ -114,19 +93,15 @@ function writeToFile(fileName, data) {
       console.log(err)
     }
     console.log('README file was created!')
-  })
-  // fs.writeFile(fileName, data, (err) => {
-    // return fs.writeFileSync(path.join(process.cwd(), fileName), data);
-    // err ? console.log(err) : console.log('README file was created!')
-  // });
+  });
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    const userInput = inquirer.prompt(questions);
-    const mdFile = generateMarkdown(userInput);
-
-    writeToFile('testREADME.md', mdFile);
+  inquirer.prompt(questions)
+    .then(function(data){
+      writeToFile('GeneratedREAMDE.md', generateMarkdown(data))
+    });
 }
 
 // Function call to initialize app
