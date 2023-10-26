@@ -9,13 +9,12 @@ const questions =
     // project name
       type: 'input',
       name: 'title',
-      default: 'Project Title',
       message: 'What is the name of your project?',
       validate: (value) => {
-        if(value) {
-          return true;
+        if(value.length < 1) {
+          return 'A title is needed to continue.'
         }
-        return 'A title is needed to continue.'
+        return true;
       }
     },
     {
@@ -23,13 +22,7 @@ const questions =
       type: 'input',
       name: 'description',
       default: 'The what, why, and how',
-      message: 'Write a description explaining the what, why, and how of your project.',
-      validate: (value) => {
-        if(value) {
-          return true;
-        }
-        return 'Describe your project before continuing.'
-      }
+      message: 'Write a description explaining your project.',
     },
     {
       // installation instructions
@@ -37,12 +30,6 @@ const questions =
       name: 'installation',
       default: 'Installation',
       message: 'Give instructions on how to install project.',
-      validate: (value) => {
-        if(value) {
-          return true;
-        }
-        return 'Please give instructions before continuing.'
-      }
     },
     {
       // usage information
@@ -61,8 +48,8 @@ const questions =
       // contributions guidelines
       type: 'input',
       name: 'contributing',
-      default: 'How to contribute',
-      message: 'Enter your GitHub Username',
+      default: 'Contributing',
+      message: 'Add other contributors to the project.',
       validate: (value) => {
         if(value) {
           return true;
@@ -104,14 +91,12 @@ const questions =
       // GitHub username
       type: 'input',
       name: 'github',
-      default: 'Nehoa21',
       message: 'What is your GitHub username? No @ needed.',
     },
     {
       // email address
       type: 'input',
       name: 'email',
-      default: 'example123@example.com',
       message: 'What is your email?',
     },
     {
@@ -125,7 +110,7 @@ const questions =
 // TODO: Create a function to write README file
 
 function writeToFile(fileName, data) {
-  const fileName = `${data.name.toLowerCase().split(' ').join('')}.md`
+  fileName = `./${data.name.toLowerCase().split(' ').join('')}.md`;
   
   fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) => {
     err ? console.log(err) : console.log('README file was created!')
@@ -133,12 +118,18 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-function init() {
-  const userInput = inquirer.prompt(questions);
-  console.log(userInput);
-
-  const mdFile = generateMarkdown(userInput);
-  console.log(mdFile);
+async function init() {
+  try {
+    const userInput = await inquirer.prompt(questions);
+    console.log(userInput);
+  
+    const mdFile = generateMarkdown(userInput);
+    console.log(mdFile);
+  
+    await writeToFile('testREADME.md', mdFile);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // Function call to initialize app
