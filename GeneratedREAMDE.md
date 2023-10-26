@@ -1,9 +1,9 @@
 
-# f
+# README Generator
 
 ## Description
 
-The what, why, and how
+Create a REAMDE file by just filling out each section about your project!
 
 ## Table of Contents
   * [Installation](#installation)
@@ -13,28 +13,28 @@ The what, why, and how
   * [Contact](#contact)
 ## Installation
 
-Installation
+'npm install' in the terminal to install inquirer
 
 ## Usage
 
-Usage
+'node index.js' in the terminal to begin. Also follow video instructions
 
 ## Contributing
 
-Contributing
+N/A
 
 ## Tests
 
-Tests
+N/A
 
 ## License
 
-Apache License 2.0
+MIT License
 
 ## Contact
 
 GitHub: [@Nehoa21](https://github.com/Nehoa21)
 
-Email: 
+Email: nehoaakina21@yahoo.com
 
-LinkedIn: 
+LinkedIn: N/A

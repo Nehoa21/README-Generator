@@ -6,11 +6,12 @@ This project makes life much easier when you are making a new repo. When you nee
 
 ## Installation
 
-In order to run this generator you need to run it through the command line. First you have to clone the code path don to your local computer. Right click on the 'index.js' file and open it in an integrated terminal. Type "npm install" to download the node_modules to run the program. 
+This generator needs to run through the command line. First you have to `git clone` the code path down to your local computer. Open it in VS Code, then right click on the `index.js` file and open it in an integrated terminal. Type `npm install` to download the node_modules to run the program. 
 
 ## Usage
 
-In the terminal type 'node index.js' to run the program, prompting your input for each section of the README. After you're finished a new file with appear at the bottom of all the files in the 'utils' folder and you're done!
+In the terminal type `node index.js` to run the program, prompting your input for each section of the README. After you're finished a new `GeneratedREADME` file with appear to the left and you're done!
 
 Here is a video tutorial following the steps to run the program:
 
+![README Generator](./gif/README%20Generator%20Tutorial.gif)
