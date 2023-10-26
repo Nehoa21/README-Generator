@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
-const fs = require('fs')
-const inquirer = require('inquirer')
-const generateMarkdown = require('./utils/generateMarkdown.js')
+const inquirer = require('inquirer');
+const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
 const questions = 
@@ -71,7 +71,7 @@ const questions =
       message: 'What license did you use?',
       choices: 
         [
-          'apache License 2.0',
+          'Apache License 2.0',
           'GNU General Public License v3.0',
           'MIT License',
           'BSD 2-Clause "Simplifed" License',
@@ -108,28 +108,25 @@ const questions =
   ];
 
 // TODO: Create a function to write README file
-
-function writeToFile(fileName, data) {
-  fileName = `./${data.name.toLowerCase().split(' ').join('')}.md`;
-  
-  fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) => {
-    err ? console.log(err) : console.log('README file was created!')
-  });
+function writeToFile(fileName, data) {  
+  fs.writeFile(fileName, data, (err) => {
+    if(err) {
+      console.log(err)
+    }
+    console.log('README file was created!')
+  })
+  // fs.writeFile(fileName, data, (err) => {
+    // return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+    // err ? console.log(err) : console.log('README file was created!')
+  // });
 }
 
 // TODO: Create a function to initialize app
-async function init() {
-  try {
-    const userInput = await inquirer.prompt(questions);
-    console.log(userInput);
-  
+function init() {
+    const userInput = inquirer.prompt(questions);
     const mdFile = generateMarkdown(userInput);
-    console.log(mdFile);
-  
-    await writeToFile('testREADME.md', mdFile);
-  } catch (error) {
-    console.log(error);
-  }
+
+    writeToFile('testREADME.md', mdFile);
 }
 
 // Function call to initialize app
