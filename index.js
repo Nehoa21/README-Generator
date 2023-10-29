@@ -100,7 +100,7 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer.prompt(questions)
     .then(function(data){
-      writeToFile('GeneratedREAMDE.md', generateMarkdown(data))
+      writeToFile('GeneratedREADME.md', generateMarkdown(data))
     });
 }
 
